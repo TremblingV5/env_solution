@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  onedev:
+    image: 1dev/server:latest
+    container_name: onedev
+    voluments:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./data:/opt/onedev
+    ports:
+      - "6610:6610"
+      - "6611:6611"
+    restart: always
