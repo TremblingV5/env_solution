@@ -1,0 +1,38 @@
+version: '3'
+
+networks:
+  all:
+    external: True
+
+services:
+  kafka:        
+    image: wurstmeister/kafka
+    container_name: kafka
+    ports:
+        - "9092:9092"
+    networks:
+      - all
+    volumes:
+        - ./data:/kafka
+    environment:
+        - KAFKA_BROKER_ID=0
+        - KAFKA_LISTENERS=PLAINTEXT://kafka:9092
+        # - KAFKA_ADVERTISED_NAME=kafka
+        - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+        - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
+        - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+        - KAFKA_HEAP_OPTS=-Xmx512M -Xms16M
+    restart: always
+
+  kafka-manager:
+    image: sheepkiller/kafka-manager
+    container_name: kafka-manager
+    networks:
+      - all
+    ports:
+        - "9099:9000"
+    environment:
+        - ZK_HOSTS=zookeeper:2181
+    depends_on:
+        - kafka
+    restart: always

@@ -1,0 +1,1 @@
+docker network create --driver=bridge --subnet=192.168.166.0/24 all

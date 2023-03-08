@@ -6,6 +6,16 @@
 
 ## Quick Start
 
+1. Ensue that there're directory named by your need, such as `mysql` and `redis`
+2. Use script `start.sh` and `stop.sh` to start or stop those environment
+
+   ```sh
+   ./start.sh mysql redis
+   ./stop.sh mysql redis
+   ```
+
+## Start a specific environment
+
 1. Enter a directory which you hope to run
 2. Ensure that there's a `docker-compose.yml` in this directory
 3. Use command to run it
