@@ -15,10 +15,10 @@ services:
     volumes:
         - ./data:/kafka
     environment:
+        - KAFKA_BROKER_NO=0
         - KAFKA_BROKER_ID=0
         - KAFKA_LISTENERS=PLAINTEXT://kafka:9092
-        # - KAFKA_ADVERTISED_NAME=kafka
-        - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka:9092
+        - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://192.168.2.115:9092
         - KAFKA_INTER_BROKER_LISTENER_NAME=PLAINTEXT
         - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
         - KAFKA_HEAP_OPTS=-Xmx512M -Xms16M

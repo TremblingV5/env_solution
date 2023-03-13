@@ -1,0 +1,56 @@
+version: '3'
+
+
+services:
+    jobmanager:
+        image: flink:1.14.5-scala_2.11-java11
+        expose:
+            - 6123
+        ports:
+            - "8081:8081"
+        command: jobmanager
+        environment:
+            - JOB_MANAGER_RPC_ADDRESS=jobmanager
+            - |
+                FLINK_PROPERTIES=
+                jobmanager.memory.process.size: 4096m
+                jobmanager.memory.heap.size: 1792m
+                jobmanager.memory.enable-jvm-direct-memory-limit: true
+                jobmanager.memory.off-heap.size: 512m
+                jobmanager.memory.jvm-metaspace.size: 768m
+                jobmanager.memory.jvm-overhead.min: 1024m
+                jobmanager.memory.jvm-overhead.max: 1024m
+        volumes:
+            - ./jobmanager-data:/opt/jobmanager
+        restart: always
+
+    taskmanager:
+        image: flink:1.14.5-scala_2.11-java11
+        expose:
+            - 6121
+            - 6122
+        depends_on:
+            - jobmanager
+        command: taskmanager
+        links:
+            - "jobmanager:jobmanager"
+        environment:
+            - TZ=Asia/Shanghai
+            - JOB_MANAGER_RPC_ADDRESS=jobmanager
+            - |
+                FLINK_PROPERTIES=
+                taskmanager.memory.process.size: 16384m
+                taskmanager.memory.framework.heap.size: 2048m
+                taskmanager.memory.task.heap.size: 2048m
+                taskmanager.memory.managed.size: 1024m
+                taskmanager.memory.framework.off-heap.size: 2048m
+                taskmanager.memory.task.off-heap.size: 2048m
+                taskmanager.memory.network.min: 512m
+                taskmanager.memory.network.max: 512m
+                taskmanager.memory.jvm-metaspace.size: 1024m
+                taskmanager.memory.jvm-overhead.min: 5632m
+                taskmanager.memory.jvm-overhead.max: 5632m
+                taskmanager.numberofTaskSlots: 10
+        volumes:
+          - ./taskmanager/flink-conf.yaml:/opt/flink/conf/flink-conf.yaml
+        restart: always
