@@ -23,3 +23,32 @@
    ```sh
    docker-compose up -d
    ```
+
+## Supported
+
+- Etcd
+- Flink
+- Kafka
+- MinIO
+- MongoDB
+- MySQL
+- OneDev
+- Redis
+- zookeeper
+
+## Planning
+
+- [ ] Cassandra
+- [ ] ClickHouse
+- [ ] Elasticsearch
+- [ ] Hadoop
+- [ ] HBase
+- [ ] HDFS
+- [ ] Hive
+- [ ] MapReduce
+- [ ] PostgreSQL
+- [ ] Presto
+- [ ] RabbitMQ
+- [ ] Spark
+- [ ] Sqoop
+- [ ] Flume
