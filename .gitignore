@@ -1,2 +1,6 @@
 data
 temp.yml
+commitlog
+hints
+logs
+saved_caches

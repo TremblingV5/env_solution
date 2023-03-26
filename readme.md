@@ -14,6 +14,8 @@
    ./stop.sh mysql redis
    ```
 
+3. It's worth noticing that everyone must write a before b if b is depend on a. For example, run a `kafka` always after run a `zookeeper`，you must use `./start.sh zookeeper kafka` and **not** ~~`./start.sh kafka zookeeper`~~. To sum up in a word, **the order of services in command must consider the dependencies between services**
+
 ## Start a specific environment
 
 1. Enter a directory which you hope to run
@@ -26,6 +28,7 @@
 
 ## Supported
 
+- Cassandra
 - Etcd
 - Flink
 - Kafka
@@ -38,7 +41,7 @@
 
 ## Planning
 
-- [ ] Cassandra
+- [x] Cassandra
 - [ ] ClickHouse
 - [ ] Elasticsearch
 - [ ] Hadoop
@@ -49,6 +52,7 @@
 - [ ] PostgreSQL
 - [ ] Presto
 - [ ] RabbitMQ
+- [ ] Solr
 - [ ] Spark
 - [ ] Sqoop
 - [ ] Flume

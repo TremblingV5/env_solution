@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  cassandra:
+    image: cassandra:4.1
+    container_name: cassandra
+    ports:
+        - "7000:7000"
+        - "9042:9042"
+    volumes:
+      - ./commitlog:/var/lib/cassandra/commitlog
+      - ./hints:/var/lib/cassandra/hints
+      - ./data:/var/lib/cassandra/data
+      - ./saved_caches:/var/lib/cassandra/saved_caches
+      - ./logs:/var/lib/cassandra/logs
+    restart: always
