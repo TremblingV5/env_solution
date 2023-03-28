@@ -45,7 +45,7 @@
 - [ ] ClickHouse
 - [ ] Elasticsearch
 - [ ] Hadoop
-- [ ] HBase
+- [x] HBase
 - [ ] HDFS
 - [ ] Hive
 - [ ] MapReduce

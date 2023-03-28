@@ -4,3 +4,6 @@ commitlog
 hints
 logs
 saved_caches
+hbase-conf
+hbase-data
+hbase-zoo-data
