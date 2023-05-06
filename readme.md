@@ -6,15 +6,16 @@
 
 ## Quick Start
 
-1. Ensue that there're directory named by your need, such as `mysql` and `redis`
-2. Use script `start.sh` and `stop.sh` to start or stop those environment
+1. Run `git clone` in the directory of your project or any directory you like, and use `cd` enter the `./env_solution`
+2. Ensue that there're directory named by your need, such as `mysql` and `redis`
+3. Use script `start.sh` and `stop.sh` to start or stop those environment
 
    ```sh
    ./start.sh mysql redis
    ./stop.sh mysql redis
    ```
 
-3. It's worth noticing that everyone must write a before b if b is depend on a. For example, run a `kafka` always after run a `zookeeper`，you must use `./start.sh zookeeper kafka` and **not** ~~`./start.sh kafka zookeeper`~~. To sum up in a word, **the order of services in command must consider the dependencies between services**
+4. It's worth noticing that everyone must write a before b if b is depend on a. For example, run a `kafka` always after run a `zookeeper`，you must use `./start.sh zookeeper kafka` and **not** ~~`./start.sh kafka zookeeper`~~. To sum up in a word, **the order of services in command must consider the dependencies between services**
 
 ## Start a specific environment
 
