@@ -1,13 +1,13 @@
 # Environment Solution
 
-> Most coder must have encountered things which it's difficult to quickly build a development environment. This project is built to provide a rapid start development environment. It is worth noticing that this project depends on Docker and docker-compose.
+> This project is built to provide a rapid start development environment. It is worth noticing that this project depends on Docker and docker-compose.
 
 [TOC]
 
 ## Quick Start
 
 1. Run `git clone` in the directory of your project or any directory you like, and use `cd` enter the `./env_solution`
-2. Ensue that there're directory named by your need, such as `mysql` and `redis`
+2. Ensure that there's directory named by your need, such as `mysql` and `redis`
 3. Use script `start.sh` and `stop.sh` to start or stop those environment
 
    ```sh
@@ -15,7 +15,7 @@
    ./stop.sh mysql redis
    ```
 
-4. It's worth noticing that everyone must write a before b if b is depend on a. For example, run a `kafka` always after run a `zookeeper`，you must use `./start.sh zookeeper kafka` and **not** ~~`./start.sh kafka zookeeper`~~. To sum up in a word, **the order of services in command must consider the dependencies between services**
+4. It's worth noticing that everyone must write `a` before `b` if `b` is depend on `a`. For example, run a `kafka` always after run a `zookeeper`，you must use `./start.sh zookeeper kafka` and **not** ~~`./start.sh kafka zookeeper`~~. To sum up in a word, **the order of services in command must consider the dependencies between services**
 
 ## Start a specific environment
 
@@ -30,15 +30,19 @@
 ## Supported
 
 - Cassandra
-- Etcd
+- etcd
 - Flink
+- HBase
 - Kafka
 - MinIO
 - MongoDB
 - MySQL
+- Nacos
 - OneDev
+- PostgreSQL
 - Redis
-- zookeeper
+- Spark
+- Zookeeper
 
 ## Planning
 
@@ -50,7 +54,7 @@
 - [ ] HDFS
 - [ ] Hive
 - [ ] MapReduce
-- [ ] PostgreSQL
+- [x] PostgreSQL
 - [ ] Presto
 - [ ] RabbitMQ
 - [ ] Solr
