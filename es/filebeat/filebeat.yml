@@ -1,0 +1,29 @@
+filebeat:
+  inputs:
+    - type: log
+      enabled: true
+      paths:
+        - /var/log/filebeat/logs/*.log
+
+setup:
+  ilm:
+    enabled: false
+
+  template:
+    settings:
+      index:
+        number_of_shards: 1
+        number_of_replicas: 0
+    name: "filebeat"
+    pattern: "filebeat-*"
+  kibana:
+    host: "kibana:5601"
+
+output:
+  logstash:
+    hosts: ["logstash:5044"]
+  elasticsearch:
+    hosts: ["es:9200"]
+    index: "filebeat-%{+yyyy.MM.dd}"
+
+

@@ -20,6 +20,17 @@ services:
         soft: -1
         hard: -1
 
+  filebeat:
+    image: elastic/filebeat:7.13.4
+    container_name: filebeat
+    volumes:
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml
+      - ./filebeat/logs:/var/log/filebeat/logs
+    depends_on:
+      - es
+      - kibana
+    restart: always
+
   logstash:
     image: logstash:7.13.4
     container_name: logstash
